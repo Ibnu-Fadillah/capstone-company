@@ -1,0 +1,33 @@
+{
+  "name": "company-capstone",
+  "description": "",
+  "version": "1.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "author": "Google Inc.",
+  "engines": {
+    "node": "14.x.x"
+  },
+  "scripts": {
+    "deploy": "gcloud app deploy",
+    "start": "node ./src/app.js",
+    "starts": "nodemon ./src/app.js",
+    "unit-test": "mocha test/ --timeout=60000 --exit",
+    "test": "npm run unit-test"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^20.2.1",
+    "chai": "^4.2.0",
+    "eslint": "^8.17.0",
+    "express": "^4.16.4",
+    "wait-port": "^0.2.7",
+    "nanoid": "^3.3.1"
+  },
+  "devDependencies": {
+    "mocha": "^9.0.0",
+    "proxyquire": "^2.1.0",
+    "sinon": "^14.0.0",
+    "supertest": "^6.0.0"
+  },
+  "main": "app.js"
+}
