@@ -1,7 +1,9 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable prefer-const */
+const { response } = require('@hapi/hapi/lib/validation');
 const { nanoid } = require('nanoid');
 const products = require('./products');
+const prices = require('./prices');
 
 //Kriteria 1: API Dapat Menyimpan Products
 const addProductHandler = (request, h) => {
@@ -61,8 +63,7 @@ const getAllProductsHandler = (request, h) => {
     
     const response = h.response({
         status: 'success',
-        data: {
-            products: productsData.map((product) => ({
+        data: productsData.map((product) => ({
             id: product.id,
             ProductName: product.ProductName, 
             ProductCategory: product.ProductCategory,
@@ -73,8 +74,7 @@ const getAllProductsHandler = (request, h) => {
             Photos: product.Photos,
             insertedAt: product.insertedAt,
             updatedAt: product.updatedAt,
-            })),
-        },
+        })),
     });   
     return response;
 };
@@ -105,7 +105,7 @@ const getProductByIdHandler = (request, h) => {
 const editProductByIdHandler = (request, h) => {
     const { id } = request.params;
     const { 
-        ProductName, ProductCategory, Price, Quantity, Cost, Description, Photos,
+        ProductName, ProductCategory, Price, Quantity, Cost, Description, Photos
     } = request.payload;
     // const finished = pageCount === readPage;
     const updatedAt = new Date().toISOString();
@@ -122,7 +122,6 @@ const editProductByIdHandler = (request, h) => {
         }
 
         products[index] = {
-            ...products[index],
             id,
             ProductName,
             ProductCategory,
@@ -171,10 +170,15 @@ const deleteProductByIdHandler = (request, h) => {
     return response;
 };
 
+const index = (request, h) => {
+    return h.redirect('/products');
+};
+
 module.exports = { 
     addProductHandler, 
     getAllProductsHandler, 
     getProductByIdHandler, 
     editProductByIdHandler,
     deleteProductByIdHandler,
+    index,
 };

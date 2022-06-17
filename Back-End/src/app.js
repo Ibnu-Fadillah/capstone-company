@@ -4,6 +4,18 @@
 const Hapi = require('@hapi/hapi');
 const routes = require('./routes'); 
 const PORT = parseInt(process.env.PORT) || 8080;
+module.exports = {  
+  method: 'POST',
+  path: '/file-uploads',
+  options: {
+    payload: {
+      maxBytes: 209715200,
+      output: 'file',
+      parse: true,
+      multipart: true     // <-- this fixed the media type error
+    }
+  }
+}
 const init = async () => {
     const server = Hapi.server({
         port: PORT,
