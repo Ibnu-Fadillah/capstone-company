@@ -4,10 +4,43 @@ const {
     getProductByIdHandler, 
     editProductByIdHandler,
     deleteProductByIdHandler,
+    index,
 } = require('./handler');
+
+const { 
+    OptimGetAll,
+    formulaOptim,
+    formulaOptimId,
+    coba,
+} = require('./handlerPrice');
 
 
 const routes = [
+    {
+        method: 'GET',
+        path: '/coba',
+        handler: coba,
+    },
+    {
+        method: 'GET',
+        path: '/',
+        handler: index,
+    },
+    {
+        method: 'GET',
+        path: '/formula',
+        handler: OptimGetAll,
+    },
+    {
+        method: 'GET',
+        path: '/formula/{id}',
+        handler: formulaOptimId,
+    },
+    {
+        method: 'POST',
+        path: '/formula/post',
+        handler: formulaOptim,
+    },
     {
         method: 'POST',
         path: '/products/post',
