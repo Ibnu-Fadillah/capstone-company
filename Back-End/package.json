@@ -24,8 +24,9 @@
     "chai": "^4.2.0",
     "eslint": "^8.17.0",
     "express": "^4.16.4",
-    "wait-port": "^0.2.7",
-    "nanoid": "^3.3.1"
+    "firebase": "^9.8.3",
+    "nanoid": "^3.3.1",
+    "wait-port": "^0.2.7"
   },
   "devDependencies": {
     "mocha": "^9.0.0",

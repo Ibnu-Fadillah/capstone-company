@@ -28,6 +28,9 @@ const addProductHandler = (request, h) => {
         id, ProductName, ProductCategory, Price, Quantity, Cost, Description, Photos, insertedAt, updatedAt,
     };
     products.push(newProduct);
+    // addFirebase(id, newProduct.ProductName, newProduct.ProductCategory, newProduct.Price,
+    //     newProduct.Quantity, newProduct.Cost, newProduct.Description, newProduct.Photos, newProduct.insertedAt, newProduct.updatedAt
+    //     );
     const isSuccess = products.filter((product) => product.id === id).length > 0;
  
     if (isSuccess) {
